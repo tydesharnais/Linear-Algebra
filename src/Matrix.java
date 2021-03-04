@@ -27,6 +27,26 @@ public class Matrix<T> {
         numMatrix = new int[rowNumbers][columnNumbers];
     }
 
+    /**
+     * Getters and Setters
+     */
+    public void setRowNumbers(int rowNumbers){
+        this.rowNumbers = rowNumbers;
+    }
+
+    public void setColumnNumbers(int columnNumbers){
+        this.columnNumbers = columnNumbers;
+    }
+
+    public int getRowNumbers(){
+        return rowNumbers;
+    }
+
+    public int getColumnNumbers(){
+        return columnNumbers;
+    }
+
+
     public void getEntries(){
 
         System.out.println();

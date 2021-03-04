@@ -6,6 +6,7 @@ public class mainApp {
     public static void main(String[] args){
 
         boolean matrixExists = false;
+        boolean matrixSecondExists = false;
         Matrix<Integer> matrix = null;
         Matrix<Integer> matrixSecond = null;
 
@@ -16,7 +17,7 @@ public class mainApp {
 
         int optionn = 0;
 
-        while (optionn != 4)
+        while (optionn != 5)
 
         {
             optionn = showMenu();
@@ -48,7 +49,7 @@ public class mainApp {
                     int selection;
 
                     keyboard = new Scanner(System.in);
-                    showMatrixMenu(matrixExists,matrix);
+                    showMatrixMenu(matrixExists,matrixSecondExists,matrix, matrixSecond);
                     System.out.println("Enter your choice:");
                     selection = keyboard.nextInt();
 
@@ -70,6 +71,19 @@ public class mainApp {
                     break;
 
                 case 4:
+                    System.out.print("\nHow many rows in matrix:");
+                    Scanner scan1 = new Scanner(System.in);
+                    int rows1 = scan1.nextInt();
+                    System.out.print("\nHow many columns in matrix:");
+                    int columns1 = scan1.nextInt();
+                    matrixSecondExists = true;
+                    matrixSecond = new Matrix<Integer>(rows1,columns1);
+                    matrixSecond.getEntries();
+
+                    break;
+
+
+                case 5:
                     exit(0);
                     
                     break;
@@ -79,12 +93,6 @@ public class mainApp {
 
             }
         }
-
-
-        matrix.printMatrix();
-        matrix.formatAugmentedMatrix();
-        matrix.printRefactorMatrix();
-
     }
 
     public static int showMenu(){
@@ -97,6 +105,7 @@ public class mainApp {
         System.out.println("1.Add a new Matrix");
         System.out.println("2.Print Current Matrix");
         System.out.println("3. Display Matrix options");
+        System.out.println("4. Add another matrix");
         System.out.println("4.Quit");
         System.out.println("--------------");
         System.out.println("Enter your choice:");
@@ -105,16 +114,20 @@ public class mainApp {
         return optionn;
     }
 
-    public static void showMatrixMenu(boolean matrixExists, Matrix matrix){
+    public static void showMatrixMenu(boolean matrixExists,boolean secondMatrixExists, Matrix matrix, Matrix matrix2){
         System.out.println("Current Matrix");
         System.out.println("---------------\n");
         if(!matrixExists){
             System.out.println("[]");
         }
-        else{
+        else if(matrixExists && !secondMatrixExists){
             matrix.printMatrix();
         }
-
+        else{
+            matrix.printMatrix();
+            matrix2.printMatrix();
+        }
+        System.out.println();
         System.out.println("Matrix Menu:");
         System.out.println("--------------");
         System.out.println("1. Find Determinant");

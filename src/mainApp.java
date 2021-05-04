@@ -1,14 +1,18 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static java.lang.System.exit;
 
 public class mainApp {
     public static void main(String[] args){
+        ArrayList<Matrix> matrixHolder = new ArrayList<Matrix>();
+        HashMap<Boolean, Matrix> hashmapExistence = new HashMap<>();
 
         boolean matrixExists = false;
         boolean matrixSecondExists = false;
-        Matrix<Integer> matrix = null;
-        Matrix<Integer> matrixSecond = null;
+        Matrix matrix = null;
+        Matrix matrixSecond = null;
 
         System.out.println();
         System.out.println("Welcome to Ty's Linear Algebra Calculator");
@@ -31,8 +35,9 @@ public class mainApp {
                     System.out.print("\nHow many columns in matrix:");
                     int columns = scan.nextInt();
                     matrixExists = true;
-                    matrix = new Matrix<Integer>(rows,columns);
+                    matrix = new Matrix(rows,columns);
                     matrix.getEntries();
+                    matrixHolder.add(matrix);
                     break;
 
                 case 2:
@@ -77,8 +82,9 @@ public class mainApp {
                     System.out.print("\nHow many columns in matrix:");
                     int columns1 = scan1.nextInt();
                     matrixSecondExists = true;
-                    matrixSecond = new Matrix<Integer>(rows1,columns1);
+                    matrixSecond = new Matrix(rows1,columns1);
                     matrixSecond.getEntries();
+                    matrixHolder.add(matrix);
 
                     break;
 
@@ -132,7 +138,7 @@ public class mainApp {
         System.out.println("--------------");
         System.out.println("1. Find Determinant");
         System.out.println("2. Show Format Matrix");
-        System.out.println("3. Display Matrix options");
+        System.out.println("3. Elementary Operations");
         System.out.println("4.Quit");
         System.out.println("--------------");
 
